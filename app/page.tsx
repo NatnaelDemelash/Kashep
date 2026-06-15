@@ -1,6 +1,9 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import HowItWorks from '@/components/HowItWorks';
+import Features from '@/components/Features';
+import Pricing from '@/components/Pricing';
+import Waitlist from '@/components/Waitlist';
 // import HowItWorks from "@/components/HowItWorks";
 // import Features from "@/components/Features";
 // import WaitlistForm from "@/components/WaitlistForm";
@@ -12,9 +15,9 @@ export default function Home() {
       <Navbar />
       <Hero />
       <HowItWorks />
-      {/* <Features />
-      <WaitlistForm />
-      <Footer /> */}
+      <Features />
+      <Pricing />
+      <Waitlist />
     </main>
   );
 }
