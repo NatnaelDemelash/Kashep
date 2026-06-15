@@ -1,10 +1,21 @@
-// Hero.tsx
 'use client';
 
+import { useState } from 'react';
+import { Send } from 'lucide-react';
 import PlanCard from './PlanCard';
 import { ArrowRight, Play } from 'lucide-react';
 
 export default function Hero() {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  const scrollToWaitlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById('waitlist');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative overflow-hidden bg-white pt-14 md:pt-[58px]">
       {/* Background decoration */}
@@ -54,7 +65,7 @@ export default function Hero() {
 
             {/* Description */}
             <p className="mb-10 text-[16px] leading-relaxed text-gray-600">
-              Tell Kashep your salary, debts, and savings goal once. It builds your
+              Set your salary, debts, and savings goal once. Kashep builds your
               full month plan, splits it into weekly budgets, and warns you before
               you overspend.{' '}
               <span className="font-semibold text-gray-800">
@@ -63,8 +74,11 @@ export default function Hero() {
             </p>
 
             {/* Buttons */}
-            <div className="mb-8 flex flex-wrap gap-4">
-              <button className="group inline-flex items-center gap-2 rounded-xl bg-[#007042] px-6 py-3.5 text-[14px] font-semibold text-white transition-all hover:bg-[#005832] hover:shadow-lg">
+            <div className="mb-6 flex flex-wrap gap-4">
+              <button
+                onClick={scrollToWaitlist}
+                className="group inline-flex items-center gap-2 rounded-xl bg-[#007042] px-6 py-3.5 text-[14px] font-semibold text-white transition-all hover:bg-[#005832] hover:shadow-lg"
+              >
                 Join the waitlist
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </button>
@@ -72,6 +86,31 @@ export default function Hero() {
                 <Play size={14} />
                 See how it works
               </button>
+            </div>
+
+            {/* Open in Telegram button - Coming Soon */}
+            <div className="mb-8">
+              <div
+                className="relative inline-block"
+                onMouseEnter={() => setShowTooltip(true)}
+                onMouseLeave={() => setShowTooltip(false)}
+              >
+                <button
+                  onClick={scrollToWaitlist}
+                  className="inline-flex items-center gap-2 rounded-lg border border-[#2AABEE]/30 bg-[#2AABEE]/5 px-5 py-2.5 text-[13px] font-medium text-[#2AABEE] transition-all hover:bg-[#2AABEE]/10"
+                >
+                  <Send size={15} />
+                  Open in Telegram
+                </button>
+                
+                {/* Tooltip */}
+                {showTooltip && (
+                  <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 px-2 py-1 text-[10px] text-white">
+                    Launching soon — join waitlist
+                    <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-gray-900" />
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Trust indicators */}

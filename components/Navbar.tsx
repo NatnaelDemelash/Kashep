@@ -1,24 +1,34 @@
-// Navbar.tsx - with working fonts
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Send } from 'lucide-react';
 
 const navLinks = [
   { name: 'How it works', href: '#how-it-works' },
   { name: 'Features', href: '#features' },
+  { name: 'Pricing', href: '#pricing' },
   { name: 'Waitlist', href: '#waitlist' },
 ];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToWaitlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById('waitlist');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   return (
     <nav
@@ -32,7 +42,7 @@ export default function Navbar() {
         <div className="flex h-14 items-center justify-between md:h-[58px]">
           {/* Logo */}
           <a href="/" className="flex items-center gap-2">
-            <span className="inline-flex h-[30px] w-[30px] items-center justify-center rounded-lg bg-[#007042]">
+            <span className="inline-flex h-[30px] w-[30px] items-center justify-center rounded-lg bg-[#166534]">
               <svg
                 viewBox="0 0 16 16"
                 fill="none"
@@ -47,7 +57,7 @@ export default function Navbar() {
               <span className="text-[17px] font-extrabold tracking-tight text-gray-900" style={{ fontFamily: "'Bricolage Grotesque', system-ui" }}>
                 Kashep
               </span>
-              <span className="text-[8px] tracking-[0.2em] text-[#007042]">
+              <span className="text-[8px] tracking-[0.2em] text-[#166534]">
                 SMART BUDGETING
               </span>
             </div>
@@ -64,36 +74,71 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
-            <button className="rounded-lg bg-[#007042] px-[18px] py-2 text-[13px] font-medium text-white transition-all hover:bg-[#005832]">
+            
+            {/* Join Waitlist button */}
+            <button
+              onClick={scrollToWaitlist}
+              className="rounded-lg bg-[#166534] px-[18px] py-2 text-[13px] font-medium text-white transition-all hover:bg-[#14532d] hover:shadow-md"
+            >
               Join Waitlist →
             </button>
+
+            {/* Open in Telegram button - Desktop only */}
+            <div
+              className="relative"
+              onMouseEnter={() => setShowTooltip(true)}
+              onMouseLeave={() => setShowTooltip(false)}
+            >
+              <button
+                onClick={scrollToWaitlist}
+                className="inline-flex items-center gap-2 rounded-lg border border-[#2AABEE]/30 bg-[#2AABEE]/5 px-[18px] py-2 text-[13px] font-medium text-[#2AABEE] transition-all hover:bg-[#2AABEE]/10"
+              >
+                <Send size={14} />
+                Open in Telegram
+              </button>
+              
+              {/* Tooltip */}
+              {showTooltip && (
+                <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 px-2 py-1 text-[10px] text-white">
+                  Launching soon
+                  <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-gray-900" />
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Mobile toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-gray-500 md:hidden"
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu - Telegram button NOT shown here */}
         {isMobileMenuOpen && (
           <div className="border-t border-gray-100 bg-white py-4 pb-6 md:hidden">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block py-2.5 text-[15px] text-gray-500 hover:text-gray-900"
+            <div className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="py-2.5 text-[15px] text-gray-500 hover:text-gray-900"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <button
+                onClick={scrollToWaitlist}
+                className="mt-3 rounded-lg bg-[#166534] py-2.5 text-[13px] font-medium text-white"
               >
-                {link.name}
-              </a>
-            ))}
-            <button className="mt-3 w-full rounded-lg bg-[#007042] py-2.5 text-[13px] font-medium text-white">
-              Join Waitlist →
-            </button>
+                Join Waitlist →
+              </button>
+              {/* Telegram button hidden on mobile - only in hero */}
+            </div>
           </div>
         )}
       </div>
