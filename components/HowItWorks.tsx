@@ -179,10 +179,10 @@ export default function HowItWorks() {
           <div className="inline-flex flex-col items-center gap-4 rounded-2xl border border-gray-200 bg-gray-50/50 px-8 py-8 md:flex-row md:px-10">
             <div className="text-left">
               <p className="text-sm font-semibold text-gray-900">
-                Ready to take control?
+                Ready to take control of your money?
               </p>
               <p className="text-[13px] text-gray-500">
-                Join 200+ Ethiopians already on the waitlist.
+                Be the first to experience Kashep.
               </p>
             </div>
             <button className="rounded-lg bg-[#166534] px-6 py-2.5 text-[13px] font-medium text-white transition-all hover:bg-[#14532d] hover:shadow-md">

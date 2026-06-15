@@ -51,22 +51,23 @@ export default function Waitlist() {
       <div className="relative mx-auto max-w-5xl px-6 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           {/* Heading */}
-          <h2
-            className={`mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl transition-all duration-700 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-            }`}
-          >
-            Join the waitlist
-          </h2>
+         <h2
+          className={`mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl transition-all duration-700 delay-100 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+          }`}
+        >
+          Be the first to know when{' '}
+          <span className="text-[#86efac]">Kashep launches</span>
+        </h2>
 
-          {/* Subheading */}
-          <p
-            className={`mb-8 text-[15px] leading-relaxed text-white/70 transition-all duration-700 delay-100 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-            }`}
-          >
-            Be the first to know when Kashep launches.
-          </p>
+        {/* Subheading */}
+        <p
+          className={`mb-8 text-[15px] leading-relaxed text-white/70 transition-all duration-700 delay-200 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+          }`}
+        >
+          Join the waitlist for early access.
+        </p>
 
           {/* Waitlist form */}
           <div

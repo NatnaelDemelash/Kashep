@@ -4,6 +4,7 @@ import HowItWorks from '@/components/HowItWorks';
 import Features from '@/components/Features';
 import Pricing from '@/components/Pricing';
 import Waitlist from '@/components/Waitlist';
+import Footer from '@/components/Footer';
 // import HowItWorks from "@/components/HowItWorks";
 // import Features from "@/components/Features";
 // import WaitlistForm from "@/components/WaitlistForm";
@@ -18,6 +19,7 @@ export default function Home() {
       <Features />
       <Pricing />
       <Waitlist />
+      <Footer />
     </main>
   );
 }
