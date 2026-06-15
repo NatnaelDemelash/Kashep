@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import HowItWorks from '@/components/HowItWorks';
 // import HowItWorks from "@/components/HowItWorks";
 // import Features from "@/components/Features";
 // import WaitlistForm from "@/components/WaitlistForm";
@@ -10,8 +11,8 @@ export default function Home() {
     <main className="min-h-screen bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] text-slate-900">
       <Navbar />
       <Hero />
-      {/* <HowItWorks />
-      <Features />
+      <HowItWorks />
+      {/* <Features />
       <WaitlistForm />
       <Footer /> */}
     </main>
