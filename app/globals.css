@@ -1,44 +1,40 @@
+/* globals.css - simplified */
 @import 'tailwindcss';
 
-/* Force light theme only - no dark mode interference */
-:root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-bricolage: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-
-  /* Neutral color palette - no dark mode */
-  --color-slate-50: #f8fafc;
-  --color-slate-100: #f1f5f9;
-  --color-slate-200: #e2e8f0;
-  --color-slate-300: #cbd5e1;
-  --color-slate-400: #94a3b8;
-  --color-slate-500: #64748b;
-  --color-slate-600: #475569;
-  --color-slate-700: #334155;
-  --color-slate-800: #1e293b;
-  --color-slate-900: #0f172a;
-}
-
-/* Remove dark mode preference override */
 body {
+  font-family: var(--font-sans);
   background: #ffffff;
   color: #0f172a;
-  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
 }
 
-/* Focus styles */
+.font-bricolage {
+  font-family: var(--font-bricolage);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
 *:focus-visible {
-  outline: 2px solid #0f172a;
+  outline: 2px solid #007042;
   outline-offset: 2px;
 }
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }

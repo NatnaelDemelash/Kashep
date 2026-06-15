@@ -7,7 +7,7 @@ import Hero from '@/components/Hero';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] text-slate-900">
       <Navbar />
       <Hero />
       {/* <HowItWorks />

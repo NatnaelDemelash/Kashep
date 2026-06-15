@@ -1,3 +1,4 @@
+// Navbar.tsx - with working fonts
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -14,92 +15,85 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToWaitlist = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById('waitlist');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
-  };
-
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm'
-          : 'bg-white border-b border-slate-100'
+          ? 'border-b border-gray-200 bg-white/90 backdrop-blur-lg shadow-sm'
+          : 'border-b border-gray-100 bg-white'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div className="mx-auto max-w-6xl px-6 md:px-8">
+        <div className="flex h-14 items-center justify-between md:h-[58px]">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-1.5 group">
-            <span className="text-2xl font-semibold tracking-tight text-slate-800">
-              Kashep
+          <a href="/" className="flex items-center gap-2">
+            <span className="inline-flex h-[30px] w-[30px] items-center justify-center rounded-lg bg-[#007042]">
+              <svg
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 fill-white"
+              >
+                <rect x="1" y="1" width="8" height="8" rx="2" />
+                <rect x="7" y="7" width="8" height="8" rx="2" opacity="0.5" />
+              </svg>
             </span>
-            <span className="text-xs font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
-              Beta
-            </span>
+            <div className="flex flex-col leading-tight">
+              <span className="text-[17px] font-extrabold tracking-tight text-gray-900" style={{ fontFamily: "'Bricolage Grotesque', system-ui" }}>
+                Kashep
+              </span>
+              <span className="text-[8px] tracking-[0.2em] text-[#007042]">
+                SMART BUDGETING
+              </span>
+            </div>
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop nav */}
+          <div className="hidden items-center gap-6 md:flex">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm text-slate-600 hover:text-slate-900 transition-colors font-medium"
+                className="text-[13px] text-gray-500 transition-colors hover:text-gray-900"
               >
                 {link.name}
               </a>
             ))}
-            <button
-              onClick={scrollToWaitlist}
-              className="bg-slate-900 text-white text-sm font-medium px-5 py-2 rounded-full shadow-sm hover:bg-slate-800 transition-all hover:shadow-md"
-            >
+            <button className="rounded-lg bg-[#007042] px-[18px] py-2 text-[13px] font-medium text-white transition-all hover:bg-[#005832]">
               Join Waitlist →
             </button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-slate-700 p-2"
-            aria-label="Toggle menu"
+            className="text-gray-500 md:hidden"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 pb-6 border-t border-slate-100">
-            <div className="flex flex-col gap-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-slate-700 text-base font-medium py-2"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <button
-                onClick={scrollToWaitlist}
-                className="bg-slate-900 text-white text-center text-sm font-medium px-5 py-2.5 rounded-full mt-2"
+          <div className="border-t border-gray-100 bg-white py-4 pb-6 md:hidden">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block py-2.5 text-[15px] text-gray-500 hover:text-gray-900"
               >
-                Join Waitlist
-              </button>
-            </div>
+                {link.name}
+              </a>
+            ))}
+            <button className="mt-3 w-full rounded-lg bg-[#007042] py-2.5 text-[13px] font-medium text-white">
+              Join Waitlist →
+            </button>
           </div>
         )}
       </div>
