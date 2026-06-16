@@ -41,11 +41,11 @@ export default function Waitlist() {
     <section
       ref={sectionRef}
       id="waitlist"
-      className="relative overflow-hidden bg-gradient-to-br from-[#166534] via-[#14532d] to-[#0f3d24] py-20 md:py-28"
+      className="relative overflow-hidden bg-linear-to-br from-[#166534] via-[#14532d] to-[#0f3d24] py-20 md:py-28"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] bg-[length:20px_20px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)] bg-size-[20px_20px]" />
       </div>
 
       <div className="relative mx-auto max-w-5xl px-6 md:px-8">
@@ -98,7 +98,7 @@ export default function Waitlist() {
               <div className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-green-500/20 px-3 py-2 backdrop-blur-sm">
                 <CheckCircle size={14} className="text-[#86efac]" />
                 <p className="text-[12px] text-white/90">
-                  You're on the list!
+                  You&apos;re on the list!
                 </p>
               </div>
             )}

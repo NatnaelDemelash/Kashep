@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, Send } from 'lucide-react';
+import Link from 'next/link';
 
 const navLinks = [
   { name: 'How it works', href: '#how-it-works' },
@@ -39,10 +40,10 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto max-w-6xl px-6 md:px-8">
-        <div className="flex h-14 items-center justify-between md:h-[58px]">
+        <div className="flex h-14 items-center justify-between md:h-14.5">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
-            <span className="inline-flex h-[30px] w-[30px] items-center justify-center rounded-lg bg-[#166534]">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="inline-flex h-7.5 w-7.5 items-center justify-center rounded-lg bg-[#166534]">
               <svg
                 viewBox="0 0 16 16"
                 fill="none"
@@ -61,7 +62,7 @@ export default function Navbar() {
                 SMART BUDGETING
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <div className="hidden items-center gap-6 md:flex">
@@ -78,7 +79,7 @@ export default function Navbar() {
             {/* Join Waitlist button */}
             <button
               onClick={scrollToWaitlist}
-              className="rounded-lg bg-[#166534] px-[18px] py-2 text-[13px] font-medium text-white transition-all hover:bg-[#14532d] hover:shadow-md"
+              className="rounded-lg bg-[#166534] px-4.5 py-2 text-[13px] font-medium text-white transition-all hover:bg-[#14532d] hover:shadow-md"
             >
               Join Waitlist →
             </button>
@@ -91,7 +92,7 @@ export default function Navbar() {
             >
               <button
                 onClick={scrollToWaitlist}
-                className="inline-flex items-center gap-2 rounded-lg border border-[#2AABEE]/30 bg-[#2AABEE]/5 px-[18px] py-2 text-[13px] font-medium text-[#2AABEE] transition-all hover:bg-[#2AABEE]/10"
+                className="inline-flex items-center gap-2 rounded-lg border border-[#2AABEE]/30 bg-[#2AABEE]/5 px-4.5 py-2 text-[13px] font-medium text-[#2AABEE] transition-all hover:bg-[#2AABEE]/10"
               >
                 <Send size={14} />
                 Open in Telegram
