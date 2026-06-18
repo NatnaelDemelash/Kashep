@@ -28,7 +28,7 @@ export default function Hero() {
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <div className="grid gap-16 py-20 md:grid-cols-2 md:gap-12 md:py-28">
           {/* Left column - Text content */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-between">
             {/* Badge */}
             <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-[#007042]/10 px-3 py-1">
               <span className="relative flex h-2 w-2">
@@ -66,8 +66,8 @@ export default function Hero() {
             {/* Description */}
             <p className="mb-10 text-[16px] leading-relaxed text-gray-600">
               Set your salary, debts, and savings goal once. Kashep builds your
-              full month plan, splits it into weekly budgets, and warns you before
-              you overspend.{' '}
+              full month plan, splits it into weekly budgets, and warns you
+              before you overspend.{' '}
               <span className="font-semibold text-gray-800">
                 Not a tracker. A plan that runs ahead of you.
               </span>
@@ -80,7 +80,10 @@ export default function Hero() {
                 className="group inline-flex items-center gap-2 rounded-xl bg-[#007042] px-6 py-3.5 text-[14px] font-semibold text-white transition-all hover:bg-[#005832] hover:shadow-lg"
               >
                 Join the waitlist
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                <ArrowRight
+                  size={16}
+                  className="transition-transform group-hover:translate-x-1"
+                />
               </button>
               <button className="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-6 py-3.5 text-[14px] font-medium text-gray-700 transition-all hover:border-gray-400 hover:bg-gray-50">
                 <Play size={14} />
@@ -102,7 +105,7 @@ export default function Hero() {
                   <Send size={15} />
                   Open in Telegram
                 </button>
-                
+
                 {/* Tooltip */}
                 {showTooltip && (
                   <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 px-2 py-1 text-[10px] text-white">
@@ -137,7 +140,7 @@ export default function Hero() {
           </div>
 
           {/* Right column - Plan Card */}
-          <div className="flex items-center">
+          <div className="flex justify-center md:ml-20">
             <div className="w-full transform transition-all duration-500 hover:scale-[1.02]">
               <PlanCard />
             </div>
@@ -154,11 +157,14 @@ export default function Hero() {
               <div className="mb-2 flex items-center justify-center gap-2 md:justify-start">
                 <div className="text-3xl font-bold text-gray-900 md:text-4xl font-mono">
                   30
-                  <span className="ml-1 text-xl text-[#007042] md:text-2xl">sec</span>
+                  <span className="ml-1 text-xl text-[#007042] md:text-2xl">
+                    sec
+                  </span>
                 </div>
               </div>
               <p className="text-[13px] leading-relaxed text-gray-500">
-                Weekly balance update — you type the number, Kashep does the rest
+                Weekly balance update — you type the number, Kashep does the
+                rest
               </p>
             </div>
 
@@ -167,11 +173,14 @@ export default function Hero() {
               <div className="mb-2 flex items-center justify-center gap-2 md:justify-start">
                 <div className="text-3xl font-bold text-gray-900 md:text-4xl font-mono">
                   1
-                  <span className="ml-1 text-xl text-[#007042] md:text-2xl">plan</span>
+                  <span className="ml-1 text-xl text-[#007042] md:text-2xl">
+                    plan
+                  </span>
                 </div>
               </div>
               <p className="text-[13px] leading-relaxed text-gray-500">
-                Set up once at the start of the month — salary, debts, savings goal
+                Set up once at the start of the month — salary, debts, savings
+                goal
               </p>
             </div>
 
@@ -180,7 +189,9 @@ export default function Hero() {
               <div className="mb-2 flex items-center justify-center gap-2 md:justify-start">
                 <div className="text-3xl font-bold text-gray-900 md:text-4xl font-mono">
                   0
-                  <span className="ml-1 text-xl text-[#007042] md:text-2xl">permissions</span>
+                  <span className="ml-1 text-xl text-[#007042] md:text-2xl">
+                    permissions
+                  </span>
                 </div>
               </div>
               <p className="text-[13px] leading-relaxed text-gray-500">
