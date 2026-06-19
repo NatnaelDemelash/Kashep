@@ -3,36 +3,49 @@
 import { useEffect } from 'react';
 import { init, initData, isTMA, useSignal } from '@telegram-apps/sdk-react';
 
-export default function MiniAppPage() {
-  // Reactively read the data Telegram injected.
-  // On localhost (no Telegram), this stays undefined — that's fine.
+export default function HomePage() {
   const state = useSignal(initData.state);
   const user = state?.user;
 
   useEffect(() => {
-    // Only boot the SDK when we're actually inside Telegram.
-    // On localhost there's no Telegram, so we simply skip init —
-    // no throw, no error overlay, just the fallback screen.
     if (isTMA()) {
       init();
       initData.restore();
     }
   }, []);
 
-  const displayName =
-    user?.username ?? user?.first_name ?? 'there (open me inside Telegram)';
+  const firstName = user?.first_name ?? 'there';
+  const monthLabel = new Date().toLocaleDateString('en-US', {
+    month: 'long',
+    year: 'numeric',
+  });
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6 p-6">
-      <h1 className="text-2xl font-semibold">Hello {displayName} 👋</h1>
+    <div className="flex flex-1 flex-col">
+      <div className="mb-8">
+        <p className="font-mono text-xs uppercase tracking-wide text-gray-400">
+          {monthLabel}
+        </p>
+        <h2 className="font-bricolage text-2xl font-bold text-gray-900">
+          Hello {firstName} 👋
+        </h2>
+      </div>
 
-      <button
-        onClick={() => alert('SDK is working ✅')}
-        className="rounded-lg px-5 py-3 font-medium text-white"
-        style={{ backgroundColor: '#007042' }}
-      >
-        SDK is working
-      </button>
-    </main>
+      <div className="rounded-2xl border border-gray-200 p-6 text-center">
+        <h3 className="font-bricolage text-lg font-semibold text-gray-900">
+          No plan yet
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-gray-500">
+          Tell Kashep your salary, debts, and savings goal. We&apos;ll build
+          your full month plan and track it with you.
+        </p>
+        <button
+          onClick={() => alert('Month setup — coming next')}
+          className="mt-5 w-full rounded-xl bg-brand px-5 py-3 font-medium text-white transition hover:bg-brand/90"
+        >
+          Set up your month
+        </button>
+      </div>
+    </div>
   );
 }
