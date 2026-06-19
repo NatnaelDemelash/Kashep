@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { init, initData, isTMA, useSignal } from '@telegram-apps/sdk-react';
+import Link from 'next/link';
 
 export default function HomePage() {
   const state = useSignal(initData.state);
@@ -39,12 +40,13 @@ export default function HomePage() {
           Tell Kashep your salary, debts, and savings goal. We&apos;ll build
           your full month plan and track it with you.
         </p>
-        <button
-          onClick={() => alert('Month setup — coming next')}
-          className="mt-5 w-full rounded-xl bg-brand px-5 py-3 font-medium text-white transition hover:bg-brand/90"
+        <Link
+          href="/app/setup"
+          className="mt-5 block w-full rounded-xl bg-[#333] px-5 py-3 text-center font-medium text-white transition hover:bg-brand/90"
         >
           Set up your month
-        </button>
+        </Link>
+
       </div>
     </div>
   );
