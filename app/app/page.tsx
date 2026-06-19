@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { init, initData, useSignal } from '@telegram-apps/sdk-react';
+import { init, initData, isTMA, useSignal } from '@telegram-apps/sdk-react';
 
 export default function MiniAppPage() {
   // Reactively read the data Telegram injected.
@@ -10,11 +10,12 @@ export default function MiniAppPage() {
   const user = state?.user;
 
   useEffect(() => {
-    try {
-      init(); // boot the SDK / connect to Telegram
-      initData.restore(); // load the data Telegram passed in
-    } catch (e) {
-      console.error('Not running inside Telegram (expected on localhost):', e);
+    // Only boot the SDK when we're actually inside Telegram.
+    // On localhost there's no Telegram, so we simply skip init —
+    // no throw, no error overlay, just the fallback screen.
+    if (isTMA()) {
+      init();
+      initData.restore();
     }
   }, []);
 
